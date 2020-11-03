@@ -1,4 +1,4 @@
-from .BaseSteps import *
+from steps.BaseSteps import *
 
 
 class AuthForm(BaseSteps):

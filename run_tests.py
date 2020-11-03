@@ -1,9 +1,21 @@
 import sys
 import unittest
-from cases.SecurityCase import GetTest
+from cases.SecurityCase import SecurityTest
+from cases.PasswordCase import PasswordTest
+from cases.ContactsCase import ContactsTest
 
 if __name__ == '__main__':
-    suite = unittest.TestSuite()
-    suite.addTest(GetTest())
+    suite = unittest.TestSuite(
+    #     (
+    #     unittest.makeSuite(PasswordTest),
+    #     unittest.makeSuite(ContactsTest),
+    #     unittest.makeSuite(SecurityTest)
+    # )
+    )
+    suite.addTests([
+        PasswordTest(),
+        ContactsTest(),
+        SecurityTest()
+    ])
     result = unittest.TextTestRunner().run(suite)
     sys.exit(not result.wasSuccessful())

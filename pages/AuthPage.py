@@ -1,5 +1,5 @@
 from steps.authSteps import *
-from .BasePage import *
+from pages.BasePage import Page
 
 
 class AuthPage(Page):

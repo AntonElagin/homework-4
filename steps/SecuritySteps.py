@@ -1,9 +1,5 @@
-from selenium.webdriver import Remote
-from selenium.webdriver.remote.webelement import WebElement
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.by import By
 from steps.BaseSteps import BaseSteps
+
 
 class SecuritySteps(BaseSteps):
     devices_page_title = '//*[@data-test-id="caption-text"]'
@@ -32,6 +28,7 @@ class SecuritySteps(BaseSteps):
 
     twofact_more_link = '//*[@data-test-id="twofa-item"]//*[@data-test-id="item-details"]'
     twofact_more_page_title = '//div[@class="h-header__text"]'
+
 
     def click_devices_link(self):
         self.wait_until_and_get_elem_by_xpath(self.devices_link).click()
@@ -82,4 +79,4 @@ class SecuritySteps(BaseSteps):
         self.wait_until_and_get_elem_by_xpath(self.oauth2_link).click()
         return self.wait_until_and_get_elem_by_xpath(self.oauth2_page_title).text
 
-        
+     

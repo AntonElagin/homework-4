@@ -1,11 +1,10 @@
 from steps.authSteps import *
-from .BasePage import *
+from pages.BasePage import Page
 from steps.SecuritySteps import SecuritySteps
 
 
 class SecurityPage(Page):
     PATH = 'security'
-
 
     def click_devices_link(self):
         security_steps = SecuritySteps(self.driver)
