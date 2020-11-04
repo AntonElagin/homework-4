@@ -7,6 +7,12 @@ import time
 class PasswordPopup(Page):
     PATH = 'security'
 
+    def is_password_changed(self):
+        password_steps = PasswordPopupSteps(self.driver)
+
+        return not password_steps.get_popup_password_chnged() is None
+
+
     def open(self, url=None):
         super().open(url)
         security_page = SecurityPage(self.driver)
@@ -27,10 +33,7 @@ class PasswordPopup(Page):
         password_steps.clean_new_password()
         password_steps.set_new_password_value(password)
 
-        time.sleep(0.5)
-        password_steps.focus_new_password_input()
         password_steps.toggle_new_password_visibility()
-
         text = self.get_new_password_security()
 
         password_steps.clean_new_password()
@@ -62,9 +65,6 @@ class PasswordPopup(Page):
 
     def is_new_password_visible(self):
         password_steps = PasswordPopupSteps(self.driver)
-        # print('------------')
-        # print(password_steps.get_new_password_input_type())
-        # print()
 
         return (password_steps.get_new_password_input_type() == 'text') and (password_steps.get_repeat_password_input_type() == 'text')
 

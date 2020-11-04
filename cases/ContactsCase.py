@@ -7,14 +7,7 @@ from pages.ContactsPage import ContactsPage
 import time
 
 class ContactsTest(Test):
-    def runTest(self):
-        self.test_add_email_button()
-        self.test_add_phone_button()
-        self.test_delete_email()
-        self.test_cancel_phone_popup()
-        self.test_close_phone_popup()
-        self.test_invalid_phone()
-        
+    
     def setUp(self):
         super().setUp()
 
@@ -25,12 +18,10 @@ class ContactsTest(Test):
     def test_add_email_button(self):
         self.page.open_add_email_popup()
         self.assertTrue(self.page.is_add_email_popup_open())
-        self.go_to_main()
 
     def test_add_phone_button(self):
         self.page.open_add_phone_popup()
         self.assertTrue(self.page.is_add_phone_popup_open())
-        self.go_to_main()
 
     def test_delete_email(self):
         self.page.open_add_email_popup()
@@ -40,7 +31,6 @@ class ContactsTest(Test):
         self.page.delete_email()
 
         self.assertTrue(self.page.has_not_backup_email())
-        self.go_to_main()
 
     def test_invalid_phone(self):
         self.page.open_add_phone_popup()
@@ -48,18 +38,15 @@ class ContactsTest(Test):
         self.page.send_phone('1231')
 
         self.assertEqual(self.page.get_phone_error(), 'Неправильный номер. Укажите другой.')
-        self.go_to_main()
 
     def test_close_phone_popup(self):
         self.page.open_add_phone_popup()
         self.page.close_phone_popup()
         self.assertTrue(self.page.is_add_phone_popup_close())
-        self.go_to_main()
         
     
     def test_cancel_phone_popup(self):
         self.page.open_add_phone_popup()
         self.page.cancle_phone_popup()
         self.assertTrue(self.page.is_add_phone_popup_close())
-        self.go_to_main()
         

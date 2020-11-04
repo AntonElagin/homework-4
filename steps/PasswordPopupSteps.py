@@ -23,6 +23,11 @@ class PasswordPopupSteps(BaseSteps):
 
     change_password_popup ='//*[@data-test-id="password-change-panel"]'
 
+    password_changed = '//*[@data-test-id="statuses-password-changed-panel"]'
+
+    def get_popup_password_chnged(self):
+        return self.wait_until_and_get_elem_by_xpath(self.password_changed)
+
     def is_popup_unvisible(self):
         return self.wait_until_and_check_invisibility_of_element(self.change_password_popup)
 
